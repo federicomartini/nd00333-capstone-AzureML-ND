@@ -17,13 +17,13 @@ def clean_data(data):
     
     return x_df, y_df
     
-url="https://github.com/federicomartini/nd00333-capstone-AzureML-ND/blob/main/starter_file/heart_failure_clinical_records_dataset.csv"
+url="https://raw.githubusercontent.com/federicomartini/nd00333-capstone-AzureML-ND/main/starter_file/heart_failure_clinical_records_dataset.csv"
 ds = TabularDatasetFactory.from_delimited_files(path=url) 
 
 x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.8, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 run = Run.get_context()
 
