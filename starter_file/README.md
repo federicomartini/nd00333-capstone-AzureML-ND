@@ -64,6 +64,17 @@ automl_config = AutoMLConfig(**automl_settings)
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The results obtained after a complete run with the **AutoML** is shown below:
+
+![](/starter_file/Screenshots/AutoML_Child_Runs_UI.png)
+
+The **Best Model** found is takes advantage of the **RobusScaler, ExtremeRandomTrees** algorithm that reached an **accuracy** of **0.85289**.
+
+![](/starter_file/Screenshots/AutoML_Best_Run_Details_UI.png)
+
+And below is the screenshot of the **id** and **model name** of the best model.
+
+![](/starter_file/Screenshots/AutoML_Best_Run_Id_Log.png)
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
