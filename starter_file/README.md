@@ -88,6 +88,11 @@ To improve the model, we could try tweaking the **featurization** parameter in t
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+The algorithm I've used is the **RandomParameterSampling** to pick up the values for each hyperparameter randomly, to avoid the risk of ending up with an experiment that takes lot of time to complete (considering the limited time applied to the VM provided by Udacity).
+
+As for the Hyperparameters, I've used the **RandomParameterSampling** with a limited number of parameters to complete the experiment in a few minutes. I've decided to use the **Regularization Strength** to figure out how the penalization to the sum of squares affects the accuracy, and the **maximum number of iterations** to understand if the model improves its performance with more iterations. A possible improvement could be to select the **Regularization Strength** as an **uniform** value in the range to see if it helps improve the performance of the model.
+
+The primary metric is the **accuracy** to find the most accurate model in terms of predicting the **DEATH_EVENT**, and we want to **MAXIMIZE** the accuracy to select the best model. The termination policy is the **BanditPolicy** set to evaluate each interval using a **slack factor** (the ratio of the distance from the best performing run) equal to 0.1, to avoid losing time on those runs that are performing bad (too far from the best run).
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
