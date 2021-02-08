@@ -38,13 +38,27 @@ The main goal is to create a model to assess the likelihood of a death by heart 
 
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
 Data are loaded from a **csv** file into the **Azure ML Studio** environment and registered as a **Dataset**.
 
 ![](/starter_file/Screenshots/dataset.png)
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+This is a **classification** problem, because we have to predict a **DEATH_EVENT** which can be **True** or **False**, so the task has been set to *"classification"*. To evaluate the performance of the model, I've set the **accuracy** as the **primary metric**. Further, to avoid running out of time, I've set the **timeout** for the experimento to 30 minutes. Lastly, I've decided to use two folds for **cross-validation**, and a maximum number of **concurrent iteration** of 3 take advantage of the compute instance setup.
+
+```
+automl_settings = {
+    "experiment_timeout_minutes": 30,
+    "task": 'classification',
+    "primary_metric": 'accuracy',
+    "max_concurrent_iterations": 3,
+    "training_data": ds,
+    "label_column_name": "DEATH_EVENT",
+    "n_cross_validations": 2
+}
+
+# TODO: Put your automl config here
+automl_config = AutoMLConfig(**automl_settings)
+```
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
