@@ -102,8 +102,6 @@ The **Best Run** reached an **accuracy** of **0.8** with **C = 5** and **max_ite
 ![](/starter_file/Screenshots/HD_Best_Run_Details_UI.png)
 ![](/starter_file/Screenshots/HD_Best_Run_Metrics_UI.png)
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
-
 Lastly, the screenshot below shows the **RunDetails** log after completing the experiment successfully.
 
 ![](/starter_file/Screenshots/HD_RunDetails_Log.png)
@@ -113,8 +111,78 @@ A possible improvement could be to select the **Regularization Strength** as an 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
+The **best model** in terms of **accuracy** has been obtained using the **AutoML** tool, and we decided to deploy so that it can become a **web service**. Below are the steps I've taken to deploy the model:
+
+* I've registered the best model obtained with the **AutoML**
+![](/starter_file/Screenshots/AutoML_registered_model.png)
+
+* The registered model already has an **outputs** folder that contains the **scoring_file** and **conda_env** files required to deploy the model
+![](/starter_file/Screenshots/AutoML_Best_Model_Files.png)
+
+* And below is how I've deployed the **best_model** to the **endpoint**
+![](/starter_file/Screenshots/AutoML_deploy_success.png)
+
+* We can also check the status of the **Endpoint** to make sure everything works as intended. In this case, the status is **Healthy**, that means the **service** is active.
+![](/starter_file/Screenshots/AutoML_Endpoint_Healthy.png)
+
+* Next, I've tested the **Endpoint** using code provided by Azure ML Studio in the **Endpoint** itself.
+```
+import urllib.request
+import json
+import os
+import ssl
+
+def allowSelfSignedHttps(allowed):
+    # bypass the server certificate verification on client side
+    if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
+        ssl._create_default_https_context = ssl._create_unverified_context
+
+allowSelfSignedHttps(True) # this line is needed if you use self-signed certificate in your scoring service.
+
+data = {
+    "data":
+    [
+        {
+            'age': "0",
+            'anaemia': "0",
+            'creatinine_phosphokinase': "0",
+            'diabetes': "0",
+            'ejection_fraction': "0",
+            'high_blood_pressure': "0",
+            'platelets': "0",
+            'serum_creatinine': "0",
+            'serum_sodium': "0",
+            'sex': "0",
+            'smoking': "0",
+            'time': "0",
+        },
+    ],
+}
+
+body = str.encode(json.dumps(data))
+
+url = 'http://59d5671d-dd9d-4780-8fdc-154604b3202f.southcentralus.azurecontainer.io/score'
+api_key = '' # Replace this with the API key for the web service
+headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+req = urllib.request.Request(url, body, headers)
+
+try:
+    response = urllib.request.urlopen(req)
+
+    result = response.read()
+    print(result)
+except urllib.error.HTTPError as error:
+    print("The request failed with status code: " + str(error.code))
+
+    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    print(error.info())
+    print(json.loads(error.read().decode("utf8", 'ignore')))
+```
+
+* Lastly, the answer from the server shows that we received a **True** from the model deployed to the **Endpoint**, based on the data used in the **request**
+![](/starter_file/Screenshots/endpoint_answer.png)
+
 ## Screen Recording
 Link: https://youtu.be/RgqXz1rPk9o
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
