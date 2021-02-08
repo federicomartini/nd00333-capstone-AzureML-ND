@@ -71,6 +71,7 @@ The results obtained after a complete run with the **AutoML** is shown below:
 The **Best Model** found is takes advantage of the **RobusScaler, ExtremeRandomTrees** algorithm that reached an **accuracy** of **0.85289**.
 
 ![](/starter_file/Screenshots/AutoML_Best_Run_Details_UI.png)
+![](/starter_file/Screenshots/AutoML_Best_Run_Metrics_UI.png)
 
 And below is the screenshot of the **id** and **model name** of the best model.
 
