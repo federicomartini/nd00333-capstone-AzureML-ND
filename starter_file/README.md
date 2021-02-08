@@ -180,6 +180,8 @@ except urllib.error.HTTPError as error:
     print(json.loads(error.read().decode("utf8", 'ignore')))
 ```
 
+The **Data** submitted in the **request** are all at 0. you can change them to find out the prediction of the model when **data** passed as an input is different.
+
 * Lastly, the answer from the server shows that we received a **True** from the model deployed to the **Endpoint**, based on the data used in the **request**
 
 ![](/starter_file/Screenshots/endpoint_answer.png)
