@@ -1,5 +1,7 @@
 # Machine Learning Engineer with Microsoft Azure Nanodegree - Capstone Project
 
+![](/starter_file/screenshots/capstone-diagram.png)
+
 In this project, I've created two models: one using **Automated ML** (denoted as AutoML from now on) and one customized model whose hyperparameters are tuned using **HyperDrive**. Then, I've compared the performance of both the models and deployed the best performing model.
 
 This project to demonstrate how to use an external dataset in a workspace, train a model using the different tools available in the AzureML framework as well as how to deploy the model as a **web service**.
