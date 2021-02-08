@@ -41,7 +41,7 @@ The main goal is to create a model to assess the likelihood of a death by heart 
 *TODO*: Explain how you are accessing the data in your workspace.
 Data are loaded from a **csv** file into the **Azure ML Studio** environment and registered as a **Dataset**.
 
-![](/screenshots/daaset.png)
+![](/Screenshots/daaset.png)
 
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
