@@ -81,7 +81,7 @@ And below is the screenshot of the **id** and **model name** of the best model.
 
 The image below shows the **experiment** completed successfully as indicated by the **RunDetails**.
 
-![](/Screenshots/AutoML_RunDetails_Complete.png)
+![](/starter_file/Screenshots/AutoML_RunDetails_Complete.png)
 
 And below is a screenshot of the **best model** trained with it's parameters.
 ![](/starter_file/Screenshots/AutoML_Best_Run_Parameters.png)
