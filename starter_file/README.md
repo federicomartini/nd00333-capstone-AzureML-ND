@@ -181,6 +181,7 @@ except urllib.error.HTTPError as error:
 ```
 
 * Lastly, the answer from the server shows that we received a **True** from the model deployed to the **Endpoint**, based on the data used in the **request**
+
 ![](/starter_file/Screenshots/endpoint_answer.png)
 
 ## Screen Recording
