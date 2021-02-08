@@ -86,18 +86,29 @@ And below is a screenshot of the **best model** trained with it's parameters.
 To improve the model, we could try tweaking the **featurization** parameter in the **AutoML** configuration. At the moment, it's set to the defaul value that is *'auto'*. Instead, we could try setting it to *'FeaturizationConfig'* to specify the steps to take for the featurization without relying on the automatic system.
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
-
 The algorithm I've used is the **RandomParameterSampling** to pick up the values for each hyperparameter randomly, to avoid the risk of ending up with an experiment that takes lot of time to complete (considering the limited time applied to the VM provided by Udacity).
 
-As for the Hyperparameters, I've used the **RandomParameterSampling** with a limited number of parameters to complete the experiment in a few minutes. I've decided to use the **Regularization Strength** to figure out how the penalization to the sum of squares affects the accuracy, and the **maximum number of iterations** to understand if the model improves its performance with more iterations. A possible improvement could be to select the **Regularization Strength** as an **uniform** value in the range to see if it helps improve the performance of the model.
+As for the Hyperparameters, I've used the **RandomParameterSampling** with a limited number of parameters to complete the experiment in a few minutes. I've decided to use the **Regularization Strength** to figure out how the penalization to the sum of squares affects the accuracy (values are 0.001, and 5.0), and the **maximum number of iterations** to understand if the model improves its performance with more iterations (values are 1, 50, and 150).
 
 The primary metric is the **accuracy** to find the most accurate model in terms of predicting the **DEATH_EVENT**, and we want to **MAXIMIZE** the accuracy to select the best model. The termination policy is the **BanditPolicy** set to evaluate each interval using a **slack factor** (the ratio of the distance from the best performing run) equal to 0.1, to avoid losing time on those runs that are performing bad (too far from the best run).
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The child runs obtained after running the experiment are shown in the image below.
+
+![](/starter_file/Screenshots/HD_Child_Runs_UI.png)
+
+The **Best Run** reached an **accuracy** of **0.8** with **C = 5** and **max_iter = 150**.
+
+![](/starter_file/Screenshots/HD_Best_Run_Details_UI.png)
+![](/starter_file/Screenshots/HD_Best_Run_Metrics_UI.png)
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+
+Lastly, the screenshot below shows the **RunDetails** log after completing the experiment successfully.
+
+![](/starter_file/Screenshots/HD_RunDetails_Log.png)
+
+A possible improvement could be to select the **Regularization Strength** as an **uniform** value in the range to see if it helps improve the performance of the model.
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
