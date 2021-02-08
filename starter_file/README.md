@@ -79,6 +79,13 @@ And below is the screenshot of the **id** and **model name** of the best model.
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
+The image below shows the **experiment** completed successfully as indicated by the **RunDetails**.
+
+![](/Screenshots/AutoML_RunDetails_Complete.png)
+
+And below is a screenshot of the **best model** trained with it's parameters.
+![](/starter_file/Screenshots/AutoML_Best_Run_Parameters.png)
+
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
