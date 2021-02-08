@@ -109,7 +109,6 @@ Lastly, the screenshot below shows the **RunDetails** log after completing the e
 A possible improvement could be to select the **Regularization Strength** as an **uniform** value in the range to see if it helps improve the performance of the model.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 The **best model** in terms of **accuracy** has been obtained using the **AutoML** tool, and we decided to deploy so that it can become a **web service**. Below are the steps I've taken to deploy the model:
 
